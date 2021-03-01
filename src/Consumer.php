@@ -202,7 +202,7 @@ final class Consumer implements ConsumerInterface
                 $this->logger->debug(sprintf(
                     'The queue message <%d> cannot be acknowledged (reject executed). %s',
                     $message->getId(),
-                    $e->getMessage(),
+                    $e->getMessage()
                 ));
             }
         } catch (UndecodablePayloadExceptionInterface $e) {
@@ -212,7 +212,7 @@ final class Consumer implements ConsumerInterface
                 $this->logger->debug(sprintf(
                     'The queue message <%d> contains undecodable payload (reject executed). %s',
                     $message->getId(),
-                    $e->getMessage(),
+                    $e->getMessage()
                 ));
             }
         } catch (InvalidPayloadExceptionInterface $e) {
@@ -222,7 +222,7 @@ final class Consumer implements ConsumerInterface
                 $this->logger->debug(sprintf(
                     'The queue message <%d> contains invalid payload (reject executed). %s',
                     $message->getId(),
-                    $e->getMessage(),
+                    $e->getMessage()
                 ), [
                     'errors' => $e->getErrors(),
                 ]);
@@ -234,7 +234,7 @@ final class Consumer implements ConsumerInterface
                 $this->logger->error(sprintf(
                     'Unexpected error occurred while handling the queue message <%d> (requeue executed). %s',
                     $message->getId(),
-                    $e->getMessage(),
+                    $e->getMessage()
                 ), [
                     'exception' => $e,
                 ]);
