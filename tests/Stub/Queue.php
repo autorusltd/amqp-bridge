@@ -108,7 +108,9 @@ final class Queue implements QueueInterface, Countable
     }
 
     /**
-     * {@inheritDoc}
+     * Dequeues the next message
+     *
+     * @return null|MessageInterface
      */
     public function dequeue() : ?MessageInterface
     {
