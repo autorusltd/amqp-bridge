@@ -16,6 +16,7 @@ build:
       dependencies:
         before:
           - sudo apt install -y librabbitmq-dev
+          - sudo apt install -y php-pear
           - sudo pecl install amqp
       tests:
         override:
