@@ -2,15 +2,14 @@ build:
   environment:
     php:
       version: '7.1'
-      pecl_extensions:
-        - amqp
       ini:
         'xdebug.mode': 'coverage'
+  dependencies:
+    before:
+      - sudo apt install -y librabbitmq-dev
+      - sudo pecl install amqp
   nodes:
     analysis:
-      dependencies:
-        before:
-          - sudo apt install -y librabbitmq-dev
       tests:
         override:
           - php-scrutinizer-run
