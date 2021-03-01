@@ -3,21 +3,21 @@ build:
     analysis:
       environment:
         php:
-          version: '7.1'
+          version: '7.1.12'
       tests:
         override:
           - php-scrutinizer-run
     coverage:
       environment:
         php:
-          version: '7.1'
+          version: '7.1.12'
           ini:
             'xdebug.mode': 'coverage'
       dependencies:
         before:
           - sudo apt install -y librabbitmq-dev
-          - sudo apt install -y php-pear
-          - sudo pecl install amqp
+          - sudo /home/scrutinizer/.phpenv/versions/7.1.12/bin/pecl channel-update pecl.php.net
+          - sudo /home/scrutinizer/.phpenv/versions/7.1.12/bin/pecl install amqp
       tests:
         override:
           - command: php vendor/bin/phpunit --coverage-clover coverage.xml
