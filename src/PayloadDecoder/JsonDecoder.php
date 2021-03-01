@@ -29,6 +29,7 @@ use function json_last_error_msg;
  * Import constants
  */
 use const JSON_ERROR_NONE;
+use const JSON_OBJECT_AS_ARRAY;
 use const JSON_THROW_ON_ERROR;
 
 /**
@@ -46,14 +47,15 @@ final class JsonDecoder implements PayloadDecoderInterface
 
         // disable throwing an exception...
         if (defined('JSON_THROW_ON_ERROR')) {
-            $flags = $flags & ~JSON_THROW_ON_ERROR;
+            $flags &= ~JSON_THROW_ON_ERROR;
         }
 
         // reset a previous error...
         json_decode('{}');
 
         // decode the message payload with the given flags...
-        $result = json_decode($payload, false, 512, $flags);
+        $assoc = ($flags & JSON_OBJECT_AS_ARRAY) === JSON_OBJECT_AS_ARRAY;
+        $result = json_decode($payload, $assoc, 512, $flags);
 
         if (!(JSON_ERROR_NONE === json_last_error())) {
             throw new UndecodablePayloadException(json_last_error_msg());
