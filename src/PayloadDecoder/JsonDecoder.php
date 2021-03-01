@@ -53,7 +53,7 @@ final class JsonDecoder implements PayloadDecoderInterface
         json_decode('{}');
 
         // decode the message payload with the given flags...
-        $result = json_decode($payload, null, 512, $flags);
+        $result = json_decode($payload, false, 512, $flags);
 
         if (!(JSON_ERROR_NONE === json_last_error())) {
             throw new UndecodablePayloadException(json_last_error_msg());
