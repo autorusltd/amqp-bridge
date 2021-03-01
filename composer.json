@@ -1,0 +1,50 @@
+{
+    "name": "arus/amqp-bridge",
+    "homepage": "https://github.com/autorusltd/amqp-bridge",
+    "description": "Bridge to AMQP extension for PHP 7.1+ (incl. PHP 8) with support for annotations and JSON Schema",
+    "license": "MIT",
+    "keywords": [
+        "fenric",
+        "arus",
+        "amqp",
+        "consumer",
+        "annotations",
+        "json-schema",
+        "php7",
+        "php8"
+    ],
+    "authors": [
+        {
+            "name": "Anatoly Fenric",
+            "email": "anatoly@fenric.ru",
+            "homepage": "https://anatoly.fenric.ru/"
+        }
+    ],
+    "require": {
+        "php": "^7.1|^8.0",
+        "ext-amqp": "*",
+        "psr/log": "^1.0",
+        "doctrine/annotations": "^1.6",
+        "justinrainbow/json-schema": "^5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "7.5.20|9.5.0",
+        "sunrise/coding-standard": "1.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Arus\\AMQP\\Bridge\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Arus\\AMQP\\Bridge\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpcs",
+            "phpunit --colors=always --coverage-text"
+        ]
+    }
+}
