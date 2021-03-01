@@ -9,6 +9,8 @@ jobs:
       - image: circleci/php:7.1-cli-node-browsers
     steps:
       - checkout
+      - run: sudo pecl install amqp
+      - run: sudo docker-php-ext-enable amqp
       - run: php -v
       - run: composer install --no-interaction --prefer-source --no-suggest
       - run: php vendor/bin/phpunit --colors=always
@@ -17,6 +19,8 @@ jobs:
       - image: circleci/php:7.2-cli-node-browsers
     steps:
       - checkout
+      - run: sudo pecl install amqp
+      - run: sudo docker-php-ext-enable amqp
       - run: php -v
       - run: composer install --no-interaction --prefer-source --no-suggest
       - run: php vendor/bin/phpunit --colors=always
@@ -25,6 +29,8 @@ jobs:
       - image: circleci/php:7.3-cli-node-browsers
     steps:
       - checkout
+      - run: sudo pecl install amqp
+      - run: sudo docker-php-ext-enable amqp
       - run: php -v
       - run: composer install --no-interaction --prefer-source --no-suggest
       - run: php vendor/bin/phpunit --colors=always
@@ -33,6 +39,8 @@ jobs:
       - image: circleci/php:7.4-cli-node-browsers
     steps:
       - checkout
+      - run: sudo pecl install amqp
+      - run: sudo docker-php-ext-enable amqp
       - run: php -v
       - run: composer install --no-interaction --prefer-source --no-suggest
       - run: php vendor/bin/phpunit --colors=always
@@ -41,6 +49,8 @@ jobs:
       - image: circleci/php:8.0-cli-node-browsers
     steps:
       - checkout
+      - run: sudo pecl install amqp
+      - run: sudo docker-php-ext-enable amqp
       - run: php -v
       - run: composer install --no-interaction --prefer-source --no-suggest
       - run: php vendor/bin/phpunit --colors=always
