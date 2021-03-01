@@ -20,6 +20,7 @@ use Arus\AMQP\Bridge\MessageInterface;
 /**
  * Import functions
  */
+use function defined;
 use function json_decode;
 use function json_last_error;
 use function json_last_error_msg;
@@ -44,7 +45,9 @@ final class JsonDecoder implements PayloadDecoderInterface
         $payload = $message->getPayload();
 
         // disable throwing an exception...
-        $flags = $flags & ~JSON_THROW_ON_ERROR;
+        if (defined('JSON_THROW_ON_ERROR')) {
+            $flags = $flags & ~JSON_THROW_ON_ERROR;
+        }
 
         // reset a previous error...
         json_decode('{}');
