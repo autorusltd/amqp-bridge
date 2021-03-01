@@ -12,6 +12,9 @@ build:
         override:
           - php-scrutinizer-run
     coverage:
+      dependencies:
+        before:
+          - sudo apt install -y librabbitmq-dev
       tests:
         override:
           - command: php vendor/bin/phpunit --coverage-clover coverage.xml
