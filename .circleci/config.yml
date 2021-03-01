@@ -58,12 +58,12 @@ jobs:
     steps:
       - run: sudo apt update
       - run: sudo apt install -y librabbitmq-dev
-      - run: docker-php-source extract
-      - run: mkdir /usr/src/php/ext/amqp
-      - run: curl -L https://github.com/php-amqp/php-amqp/archive/master.tar.gz | tar -xzC /usr/src/php/ext/amqp --strip-components=1
-      - run: docker-php-ext-install amqp
-      - run: docker-php-source delete
-      - run: docker-php-ext-enable amqp
+      - run: sudo docker-php-source extract
+      - run: sudo mkdir /usr/src/php/ext/amqp
+      - run: curl -L https://github.com/php-amqp/php-amqp/archive/master.tar.gz | sudo tar -xzC /usr/src/php/ext/amqp --strip-components=1
+      - run: sudo docker-php-ext-install amqp
+      - run: sudo docker-php-source delete
+      - run: sudo docker-php-ext-enable amqp
       - run: php -v
       - checkout
       - run: composer install --no-interaction --prefer-source --no-suggest
