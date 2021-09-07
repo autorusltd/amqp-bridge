@@ -223,7 +223,7 @@ final class Consumer implements ConsumerInterface
             $queue->reject($message);
 
             if ($this->logger instanceof LoggerInterface) {
-                $this->logger->warning(sprintf(
+                $this->logger->error(sprintf(
                     'The queue message <%d> contains invalid payload (reject executed). %s',
                     $message->getId(),
                     $e->getMessage()
